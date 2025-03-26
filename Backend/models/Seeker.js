@@ -27,16 +27,29 @@ const JobSeekerSchema = new mongoose.Schema(
         type: String,
         required: false,
       },
-      pincode: {
+      preferredPincode: {
         type: String,
         required: false,
       },
     },
-    // detailsCompleted: {
-    //   type: Boolean,
-    //   default: false, // Initially set to false
-    // },
+    
+    additionalDetailsCompleted: { type: Boolean, default: false },
+
+    location: {
+      latitude: {
+        type: Number,
+        required: false, // Make sure it's not required if you want to set it later
+      },
+      longitude: {
+        type: Number,
+        required: false, // Make sure it's not required if you want to set it later
+      },
+    },
+    isActive: {type: Boolean, default: false},
   },
+
+
+
   { timestamps: true } // Adds createdAt and updatedAt fields
 );
 

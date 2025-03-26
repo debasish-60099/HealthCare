@@ -1,5 +1,5 @@
 const express = require("express");
-const { jobSeekerSignUp, jobSeekerLogin, updateJobSeekerDetails } = require("../controllers/jobSeekerController");
+const { jobSeekerSignUp, jobSeekerLogin, updateJobSeekerDetails,updateLocation} = require("../controllers/jobSeekerController");
 // const { updateJobSeekerDetails } = require("../controllers/jobSeekerFormController");
 const router = express.Router();
 
@@ -8,7 +8,9 @@ router.post("/signup", jobSeekerSignUp);
 router.post("/login", jobSeekerLogin);
 
 // New route for updating job seeker details
-router.post("/details", updateJobSeekerDetails);
+router.post("/details", updateJobSeekerDetails);//form details
+
+router.post("/PreferedLocation",updateLocation );//prefered location
 
 module.exports = router;
 

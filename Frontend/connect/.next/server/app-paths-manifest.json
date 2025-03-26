@@ -1,8 +1,6 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/RecruiterSignUp/page": "app/RecruiterSignUp/page.js",
   "/page": "app/page.js",
-  "/map/page": "app/map/page.js",
-  "/recruiter/page": "app/recruiter/page.js",
-  "/recruiterlogin/page": "app/recruiterlogin/page.js"
+  "/jobseeker/page": "app/jobseeker/page.js",
+  "/JobSeekerSignUp/page": "app/JobSeekerSignUp/page.js",
+  "/map/page": "app/map/page.js"
 }

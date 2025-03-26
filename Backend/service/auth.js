@@ -34,22 +34,9 @@
 // }
 
 // const sessionIdToUserMap = new Map();   yaha pe ham state ko maintain ker rahe the but abhi hame staate nehi chahiye bcz we use now Stateless Authentication
-const jwt = require("jsonwebtoken");
-const secret = "simple_secret";
 
-function setUser(user) {                                             // ye particular function hamare liye token banayega user ke liye.
-    // sessionIdToUserMap.set(id, user);
-    return jwt.sign(                                                 // jab bhi mai sign ker raha hun tabhi mai ek secret key use ker raha hun
-        {
-        _id: user._id,
-        email: user.email,
-        }, 
-        secret,
-        //                             { expiresIn: '1h' }  // Token expires in 1 hour
-    );
-}
 
-function getUser(token) {              // jo bhi user hame frontend se token dega
+             // jo bhi user hame frontend se token dega
     // return sessionIdToUserMap.get(id);
     // if(!token) return null;
     // try {
@@ -60,9 +47,28 @@ function getUser(token) {              // jo bhi user hame frontend se token deg
     //     // console.error("Token validation error:", error.message);  // Log the error for debugging
     //     return null;
     // }
+
+    const jwt = require("jsonwebtoken");
+
+    function setUser(user) {                                             // ye particular function hamare liye token banayega user ke liye.
+        // sessionIdToUserMap.set(id, user);
+        return jwt.sign(                                                 // jab bhi mai sign ker raha hun tabhi mai ek secret key use ker raha hun
+            {
+            _id: user._id,
+            email: user.email,
+            }, 
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
+            //                             { expiresIn: '1h' }  // Token expires in 1 hour
+        );
+    }
+
+
+    function getUser(token) { 
     try {
-        const decoded = jwt.verify(token, 'simple_secret'); // secret used for verification
-        return decoded;
+        // const decoded = /
+        return jwt.verify(token, 'simple_secret'); // secret used for verification
+        // return decoded;
       } catch (err) {
         return null;
       }
